@@ -1,0 +1,19 @@
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt-staging
+  namespace: cert-manager
+spec:
+  acme:
+    email: jakelooker@gmail.com
+    server: https://acme-staging-v02.api.letsencrypt.org/directory
+    #server: https://acme-v02.api.letsencrypt.org/directory
+    privateKeySecretRef:
+      name: issuer-letsencrypt-staging
+    solvers:
+    - dns01:
+        cloudflare:
+          apiTokenSecretRef:
+            key: api-token
+            name: cloudflare-api-token-secret
+          email: jakelooker@gmail.com
