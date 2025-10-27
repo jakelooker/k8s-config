@@ -8,12 +8,15 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://charts.longhorn.io
-    targetRevision: 1.10.0 
-    chart: longhorn
-    helm:
-      valueFiles:
-        - $repoURL/infrastructure/longhorn/values.yaml # Reference the path to your custom values file in the Git repo
+    - repoURL: https://charts.longhorn.io
+      targetRevision: 1.10.0 
+      chart: longhorn
+    - repoURL: https://github.com/jakelooker/k8s-config.git
+      targetRevision: HEAD
+      ref: values
+  helm:
+    valuesFile:
+      - $values/applicationDefs/longhorn/values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: longhorn-system

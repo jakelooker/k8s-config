@@ -1,0 +1,9 @@
+defaultSettings:
+  storageOverProvisioningPercentage: "100"
+  replicaAutoBalance: "best-effort"
+persistence:
+  defaultClass: true
+  defaultClassReplicaCount: 3
+ingress:
+  enabled: true
+  host: longhorn.myogg.dev
