@@ -9,15 +9,15 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   sources:
+    - repoURL: https://github.com/jakelooker/k8s-config.git
+      targetRevision: main
+      ref: values
     - chart: longhorn
       repoURL: https://charts.longhorn.io
       targetRevision: 1.10.0
       helm:
         valueFiles:
           - $values/applicationDefs/longhorn/values.yaml
-    - repoURL: https://github.com/jakelooker/k8s-config.git
-      targetRevision: main
-      ref: values
   syncPolicy:
     automated:
       enabled: true
