@@ -3,26 +3,23 @@ kind: Application
 metadata:
   name: longhorn
   namespace: argocd
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
 spec:
-  project: default
-  source:
-    - repoURL: https://charts.longhorn.io
-      targetRevision: 1.10.0 
-      chart: longhorn
-    - repoURL: https://github.com/jakelooker/k8s-config.git
-      targetRevision: HEAD
-      ref: values
-  helm:
-    valuesFile:
-      - $values/applicationDefs/longhorn/values.yaml
   destination:
-    server: https://kubernetes.default.svc
     namespace: longhorn-system
+    server: https://kubernetes.default.svc
+  project: default
+  sources:
+    - chart: longhorn
+      repoURL: https://charts.longhorn.io
+      targetRevision: 1.10.0
+      helm:
+        valueFiles:
+          - $values/applicationDefs/longhorn/values.yaml
+    - repoURL: https://github.com/jakelooker/k8s-config.git
+      targetRevision: main
+      ref: values
   syncPolicy:
     automated:
-      prune: true
-      selfHeal: true
+      enabled: true
     syncOptions:
-      - CreateNamespace=true
+    - CreateNamespace=true 

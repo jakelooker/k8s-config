@@ -4,22 +4,16 @@ metadata:
   name: metallb
   namespace: argocd
   annotations:
-    argocd.argoproj.io/sync-wave: "1"
+    argocd.argoproj.io/sync-wave: "2"
 spec:
   destination:
     namespace: metallb-system
     server: https://kubernetes.default.svc
   project: default
   sources:
-    - chart: metallb
-      repoURL: https://metallb.github.io/metallb
-      targetRevision: 0.15.2
-      helm:
-        valueFiles:
-          - $values/applicationDefs/metallb/values.yaml
-    - repoURL: https://github.com/jakelooker/k8s-config.git
-      targetRevision: main
-      ref: values
+    repoURL: https://github.com/jakelooker/k8s-config.git
+    targetRevision: main
+    path: applicationDefs/metallb/config
   syncPolicy:
     automated:
       enabled: true
