@@ -29,7 +29,6 @@ spec:
               name: ssh
           resources: {}
           securityContext:
-            runAsNonRoot: true
             allowPrivilegeEscalation: false
             capabilities:
               drop:
