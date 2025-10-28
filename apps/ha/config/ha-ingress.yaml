@@ -4,7 +4,7 @@ metadata:
   annotations:
     traefik.ingress.kubernetes.io/router.middlewares: "default-redirect-https@kubernetescrd"
   name: homeassistant
-  namespace: web
+  namespace: home-assistant
 spec:
   rules:
   - host: home.myogg.dev

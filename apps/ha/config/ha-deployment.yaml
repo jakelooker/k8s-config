@@ -4,7 +4,7 @@ metadata:
   labels:
     io.kompose.service: homeassistant
   name: homeassistant
-  namespace: web
+  namespace: home-assistant
 spec:
   replicas: 1
   selector:
