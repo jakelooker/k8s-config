@@ -2,8 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    io.kompose.service: homeassistant
-  name: homeassistant
+    app: home-assistant
+  name: home-assistant
   namespace: home-assistant
 spec:
   replicas: 1
@@ -28,6 +28,28 @@ spec:
             - mountPath: /root/.ssh
               name: ssh
           resources: {}
+          securityContext:
+            runAsNonRoot: true
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - ALL
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 8123
+            initialDelaySeconds: 60
+            periodSeconds: 30
+            timeoutSeconds: 10
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 8123
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 3
       restartPolicy: Always
       volumes:
         - name: homeassistant

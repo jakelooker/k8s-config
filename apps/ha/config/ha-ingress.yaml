@@ -3,7 +3,7 @@ kind: Ingress
 metadata:
   annotations:
     traefik.ingress.kubernetes.io/router.middlewares: "default-redirect-https@kubernetescrd"
-  name: homeassistant
+  name: home-assistant
   namespace: home-assistant
 spec:
   rules:
