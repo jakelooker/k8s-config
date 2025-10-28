@@ -15,7 +15,7 @@ spec:
   template:
     metadata:
       labels:
-        io.kompose.service: homeassistant
+        app: home-assistant
     spec:
       containers:
         - image: ghcr.io/home-assistant/home-assistant:latest
