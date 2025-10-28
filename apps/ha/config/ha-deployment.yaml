@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    io.kompose.service: homeassistant
+  name: homeassistant
+  namespace: web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: homeassistant
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        io.kompose.service: homeassistant
+    spec:
+      containers:
+        - image: ghcr.io/home-assistant/home-assistant:latest
+          name: homeassistant
+          ports:
+            - containerPort: 8123
+          volumeMounts:
+            - mountPath: /config
+              name: homeassistant
+            - mountPath: /root/.ssh
+              name: ssh
+          resources: {}
+      restartPolicy: Always
+      volumes:
+        - name: homeassistant
+          persistentVolumeClaim:
+            claimName: homeassistant
+        - name: ssh 
+          persistentVolumeClaim:
+            claimName: homeassistant-ssh

@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    traefik.ingress.kubernetes.io/router.middlewares: "default-redirect-https@kubernetescrd"
+  name: homeassistant
+  namespace: web
+spec:
+  rules:
+  - host: home.myogg.net
+    http:
+      paths:
+      - backend:
+          service:
+            name: homeassistant
+            port:
+              name: http
+        path: /
+        pathType: Prefix
