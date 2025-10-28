@@ -29,7 +29,6 @@ spec:
               name: ssh
           resources: {}
           securityContext:
-            allowPrivilegeEscalation: false
             capabilities:
               drop:
                 - ALL
