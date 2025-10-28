@@ -22,4 +22,9 @@ spec:
     automated:
       enabled: true
     syncOptions:
-    - CreateNamespace=true 
+    - CreateNamespace=true
+    retry:
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 3m      
