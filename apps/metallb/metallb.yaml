@@ -16,7 +16,7 @@ spec:
       targetRevision: 0.15.2
       helm:
         valueFiles:
-          - $values/applicationDefs/metallb/values.yaml
+          - $values/apps/metallb/values.yaml
     - repoURL: https://github.com/jakelooker/k8s-config.git
       targetRevision: main
       ref: values
