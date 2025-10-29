@@ -11,3 +11,6 @@ defaultBackupStore:
   backupTarget: "nfs://192.168.46.3:/mnt/swolish/critical/apps/longhorn-backup"
 preUpgradeChecker:
   jobEnabled: false
+networkPolicies:
+  enabled: true
+  type: "k3s"
