@@ -40,3 +40,4 @@ persistence:
   media:
     enabled: true
     existingClaim: "jellyfin-media"
+    storageClass: "local-path"
