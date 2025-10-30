@@ -3,6 +3,8 @@ kind: PersistentVolume
 metadata:
   name: jellyfin-media-nfs
 spec:
+  capacity:
+    storage: 20Ti
   accessModes:
     - ReadWriteMany
   storageClassName: "local-path"
