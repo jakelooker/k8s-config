@@ -35,8 +35,8 @@ spec:
             capabilities:
               drop:
               - ALL
-            readOnlyRootFilesystem: true
-            runAsNonRoot: true
+            # readOnlyRootFilesystem: true
+            # runAsNonRoot: true
             runAsUser: 2001
             runAsGroup: 2001
           livenessProbe:
