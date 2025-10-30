@@ -8,8 +8,7 @@ spec:
   secretName: wildcard-secret
   # At least one of a DNS Name, URI, or IP address is required.
   dnsNames:
-  - "*.myogg.net"
-  - myogg.net
+  - "*.dev.myogg.net"
   issuerRef:
     kind: ClusterIssuer
     name: letsencrypt-staging
