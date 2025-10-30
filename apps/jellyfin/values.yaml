@@ -5,7 +5,7 @@ securityContext:
   readOnlyRootFilesystem: true
   runAsNonRoot: true
   runAsUser: 1000
-runtimeClassName: "nvidia"
+#runtimeClassName: "nvidia"
 ingress:
   enabled: true
   annotations:
