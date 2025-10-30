@@ -38,3 +38,5 @@ persistance:
   media:
     enabled: true
     existingClaim: "jellyfin-media"
+    storageClass: "local-path"
+    size: 20Ti
