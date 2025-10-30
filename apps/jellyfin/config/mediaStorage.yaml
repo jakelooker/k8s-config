@@ -8,7 +8,6 @@ spec:
   accessModes:
     - ReadWriteOnce
   storageClassName: "local-path"
-  volumeName: ""
   nfs:
     server: 192.168.50.2
     path: "/mnt/swolish/noBackup/media/media"
@@ -25,4 +24,3 @@ spec:
   accessModes:
     - ReadWriteOnce
   storageClassName: "local-path"
-  volumeName: ""
