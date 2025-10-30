@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: mosquitto
+  name: mosquitto
+  namespace: home-assistant
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mosquitto
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: mosquitto
+    spec:
+      containers:
+        - image: eclipse-mosquitto
+          name: mosquitto
+          ports:
+            - containerPort: 1883
+            - containerPort: 9001
+          volumeMounts:
+            - mountPath: /mosquitto
+              name: mosquitto
+          resources: {}
+          securityContext:
+            capabilities:
+              drop:
+              - ALL
+            readOnlyRootFilesystem: false
+            runAsNonRoot: true
+            runAsUser: 1000
+      restartPolicy: Always
+      volumes:
+        - name: mosquitto
+          persistentVolumeClaim:
+            claimName: mosquitto
