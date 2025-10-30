@@ -4,7 +4,7 @@ metadata:
   name: jellyfin-media-nfs
 spec:
   capacity:
-    storage: 20Ti
+    storage: 25Gi
   accessModes:
     - ReadWriteOnce
   storageClassName: "local-path"
@@ -20,7 +20,7 @@ metadata:
 spec:
   resources:
     requests:
-      storage: 20Ti
+      storage: 25Gi
   accessModes:
     - ReadWriteOnce
   storageClassName: "local-path"
