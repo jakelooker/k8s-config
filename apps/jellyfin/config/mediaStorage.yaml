@@ -18,6 +18,8 @@ metadata:
   name: jellyfin-media
   namespace: tv
 spec:
+  resources:
+    storage: 20Ti
   accessModes:
     - ReadWriteMany
   storageClassName: "local-path"
