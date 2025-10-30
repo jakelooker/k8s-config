@@ -1,0 +1,39 @@
+securityContext: {}
+  capabilities:
+    drop:
+    - ALL
+  readOnlyRootFilesystem: true
+  runAsNonRoot: true
+  runAsUser: 1000
+runtimeClassName: "nvidia"
+ingress:
+  enabled: true
+  annotations:
+    traefik.ingress.kubernetes.io/router.middlewares: "default-redirect-https@kubernetescrd"
+  hosts:
+    - host: jellyfin.myogg.dev
+      paths:
+        - path: /
+livenessProbe:
+  initialDelaySeconds: 10
+  tcpSocket:
+    port: http
+  successThreshold: 1
+  failureThreshold: 3
+  timeoutSeconds: 1
+  periodSeconds: 60
+readinessProbe:
+  initialDelaySeconds: 10
+  tcpSocket:
+    port: http
+  successThreshold: 1
+  failureThreshold: 3
+  timeoutSeconds: 1
+  periodSeconds: 30        
+persistance:
+  config:
+    enabled: true
+    existingClaim: "jellyfin-config"
+  media:
+    enabled: true
+    existingClaim: "jellyfin-media"

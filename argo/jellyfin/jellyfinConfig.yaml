@@ -4,21 +4,21 @@ metadata:
   name: longhorn-config
   namespace: argocd
   annotations:
-    argocd.argoproj.io/sync-wave: "2"
+    argocd.argoproj.io/sync-wave: "1"
 spec:
   destination:
-    namespace: longhorn-system
+    namespace: tv
     server: https://kubernetes.default.svc
   project: default
   sources:
     - repoURL: https://github.com/jakelooker/k8s-config.git
       targetRevision: main
-      path: apps/longhorn/config
+      path: apps/jellyfin/config
   syncPolicy:
     automated:
       enabled: true
     syncOptions:
-    - CreateNamespace=false
+    - CreateNamespace=true
     retry:
       backoff:
         duration: 5s
