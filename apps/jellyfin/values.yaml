@@ -34,15 +34,9 @@ readinessProbe:
 persistance:
   config:
     enabled: true
-    accessMode: ReadWriteOnce
     existingClaim: "jellyfin-config"
-    size: 16Gi
-    type: "pvc"
     storageClass: "longhorn"
   media:
     enabled: true
-    accessMode: ReadWriteOnce
     existingClaim: "jellyfin-media"
     storageClass: "local-path"
-    type: "pvc"
-    size: 21Ti
