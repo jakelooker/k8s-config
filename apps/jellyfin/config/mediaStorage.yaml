@@ -19,7 +19,8 @@ metadata:
   namespace: tv
 spec:
   resources:
-    storage: 20Ti
+    requests:
+      storage: 20Ti
   accessModes:
     - ReadWriteOnce
   storageClassName: "local-path"
