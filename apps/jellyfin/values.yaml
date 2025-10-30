@@ -6,7 +6,9 @@ securityContext:
     - ALL
   readOnlyRootFilesystem: false
   runAsNonRoot: true
-  runAsUser: 1000
+  runAsUser: 2001
+  runAsGroup: 2001
+  fsGroup: 2001
 #runtimeClassName: "nvidia"
 ingress:
   enabled: true
