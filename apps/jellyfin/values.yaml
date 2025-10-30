@@ -35,6 +35,7 @@ persistance:
   config:
     enabled: true
     existingClaim: "jellyfin-config"
+    size: 15Gi
   media:
     enabled: true
     existingClaim: "jellyfin-media"
