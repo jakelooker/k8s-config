@@ -10,9 +10,5 @@ spec:
     - name: port1
       port: 1883
       targetPort: 1883
-    - name: port2
-      port: 9001
-      targetPort: 9001
   selector:
     app: mosquitto
-  type: LoadBalancer

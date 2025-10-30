@@ -22,7 +22,6 @@ spec:
           name: mosquitto
           ports:
             - containerPort: 1883
-            - containerPort: 9001
           volumeMounts:
             - mountPath: /mosquitto
               name: mosquitto
