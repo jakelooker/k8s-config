@@ -31,9 +31,10 @@ readinessProbe:
   failureThreshold: 3
   timeoutSeconds: 1
   periodSeconds: 30        
-persistance:
+persistence:
   config:
     enabled: true
-    existingClaim: "pvc-59b305d2-be58-4dbe-9af9-bd63ede08e44"
+    existingClaim: "jellyfin-config"
   media:
     enabled: true
+    existingClaim: "jellyfin-media"
