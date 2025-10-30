@@ -35,9 +35,9 @@ persistance:
   config:
     enabled: true
     existingClaim: "jellyfin-config"
-    size: 15Gi
+    type: "pvc"
   media:
     enabled: true
     existingClaim: "jellyfin-media"
     storageClass: "local-path"
-    size: 20Ti
+    type: "pvc"
