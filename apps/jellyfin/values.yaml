@@ -1,3 +1,5 @@
+deploymentStrategy:
+  type: Recreate
 securityContext:
   capabilities:
     drop:
