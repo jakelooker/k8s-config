@@ -6,7 +6,7 @@ spec:
   capacity:
     storage: 20Ti
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   storageClassName: "local-path"
   nfs:
     server: 192.168.50.2
@@ -21,6 +21,6 @@ spec:
   resources:
     storage: 20Ti
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   storageClassName: "local-path"
   volumeName: jellyfin-media-nfs
