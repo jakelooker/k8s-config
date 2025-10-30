@@ -27,7 +27,18 @@ spec:
               name: homeassistant
             - mountPath: /root/.ssh
               name: ssh
-          resources: {}
+          resources:
+            limits:
+              cpu: 200m
+              memory: 1Gi
+          securityContext:
+            capabilities:
+              drop:
+              - ALL
+            readOnlyRootFilesystem: true
+            runAsNonRoot: true
+            runAsUser: 2001
+            runAsGroup: 2001
           livenessProbe:
             httpGet:
               path: /
