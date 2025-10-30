@@ -26,14 +26,19 @@ spec:
           volumeMounts:
             - mountPath: /mosquitto
               name: mosquitto
-          resources: {}
+          resources:
+            limits:
+              cpu: 100m
+              memory: 100Mi
           securityContext:
             capabilities:
               drop:
               - ALL
-            readOnlyRootFilesystem: false
+            readOnlyRootFilesystem: true
             runAsNonRoot: true
-            runAsUser: 1000
+            runAsUser: 2000
+            runAsGroup: 2000
+            fsGroup: 2000
       restartPolicy: Always
       volumes:
         - name: mosquitto
