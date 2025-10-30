@@ -1,4 +1,4 @@
-securityContext: {}
+securityContext:
   capabilities:
     drop:
     - ALL
