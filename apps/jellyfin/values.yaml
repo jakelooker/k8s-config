@@ -34,9 +34,7 @@ readinessProbe:
 persistance:
   config:
     enabled: true
-    existingClaim: "jellyfin-config"
     storageClass: "longhorn"
   media:
     enabled: true
-    existingClaim: "jellyfin-media"
     storageClass: "local-path"
