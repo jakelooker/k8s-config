@@ -7,7 +7,7 @@ metadata:
   namespace: home-assistant
 spec:
   rules:
-  - host: home.myogg.dev
+  - host: home.dev.myogg.net
     http:
       paths:
       - backend:
