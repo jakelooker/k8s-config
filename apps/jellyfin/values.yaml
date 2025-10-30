@@ -34,7 +34,5 @@ readinessProbe:
 persistance:
   config:
     enabled: true
-    storageClass: "longhorn"
   media:
     enabled: true
-    storageClass: "local-path"
