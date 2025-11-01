@@ -46,9 +46,6 @@ spec:
             #   cpu: 2000m
             #   memory: 3Gi
           securityContext:
-            capabilities:
-              drop:
-              - ALL
             readOnlyRootFilesystem: false
             runAsNonRoot: false
             # runAsUser: 2002
