@@ -18,7 +18,7 @@ spec:
         app: frigate
     spec:
       containers:
-        - image: ghcr.io/blakeblackshear/frigate:stable-tensorrt
+        - image: ghcr.io/blakeblackshear/frigate:stable
           env:
             - name: FRIGATE_RTSP_PASSWORD
               valueFrom:
@@ -46,6 +46,9 @@ spec:
             #   cpu: 2000m
             #   memory: 3Gi
           securityContext:
+            # capabilities:
+            #   drop:
+            #   - ALL
             readOnlyRootFilesystem: false
             runAsNonRoot: false
             # runAsUser: 2002
