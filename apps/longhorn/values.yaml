@@ -11,7 +11,7 @@ ingress:
   annotations:
     traefik.ingress.kubernetes.io/router.middlewares: "default-redirect-https@kubernetescrd"
 defaultBackupStore:
-  backupTarget: "nfs://192.168.46.3:/mnt/swolish/critical/apps/longhorn-backup"
+  backupTarget: "nfs://192.168.50.2:/mnt/swolish/critical/apps/longhorn-backup"
 preUpgradeChecker:
   jobEnabled: false
 networkPolicies:
