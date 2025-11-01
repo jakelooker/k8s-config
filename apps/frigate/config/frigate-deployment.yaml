@@ -1,0 +1,67 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: frigate
+  name: frigate
+  namespace: frigate
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frigate
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: frigate
+    spec:
+      containers:
+        - image: ghcr.io/blakeblackshear/frigate:stable-tensorrt
+          env:
+            - name: FRIGATE_RTSP_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: frigate-rtsp
+                  key: rtspPassword
+                  optional: false
+          name: frigate
+          ports:
+            - containerPort: 8971
+            - containerPort: 8554
+            - containerPort: 8555
+              protocol: TCP
+            - containerPort: 8555
+              protocol: UDP
+          volumeMounts:
+            - mountPath: /config
+              name: frigate
+            - mountPath: /media/frigate
+              name: frigate-media
+            - mountPath: /dev/shm
+              name: shm
+          resources: 
+            limits:
+              cpu: 2000m
+              memory: 3Gi
+          securityContext:
+            capabilities:
+              drop:
+              - ALL
+            readOnlyRootFilesystem: true
+            runAsNonRoot: true
+            runAsUser: 2002
+            runAsGroup: 2002
+      restartPolicy: Always
+      # runtimeClassName: nvidia
+      volumes:
+        - name: frigate
+          persistentVolumeClaim:
+            claimName: frigate
+        - name: frigate-media
+          emptyDir: {}
+        - name: shm
+          emptyDir:
+            medium: Memory
+            sizeLimit: 200Mi
