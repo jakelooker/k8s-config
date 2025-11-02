@@ -32,9 +32,9 @@ spec:
               cpu: 200m
               memory: 1Gi
           securityContext:
-            capabilities:
-              drop:
-              - ALL
+            # capabilities:
+            #   drop:
+            #   - ALL
             # readOnlyRootFilesystem: true
             # runAsNonRoot: true
             runAsUser: 2001
