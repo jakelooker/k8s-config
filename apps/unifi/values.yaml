@@ -11,7 +11,7 @@ securityContext:
 ingress:
   enabled: true
   annotations:
-    traefik.ingress.kubernetes.io/router.middlewares: "default-redirect-https@kubernetescrd"
+    traefik.ingress.kubernetes.io/router.middlewares: default-redirect-https@kubernetescrd
   hosts:
     - "unifi.dev.myogg.net"
   path: /
@@ -30,8 +30,8 @@ discoveryService:
 guiService:
   enabled: true
   annotations:
-    traefik.ingress.kubernetes.io/service.serversscheme: "https"
-    traefik.ingress.kubernetes.io/service.serverstransport: "my-insecure-transport@kubernetescrd"
+    traefik.ingress.kubernetes.io/service.serversscheme: https
+    traefik.ingress.kubernetes.io/service.serverstransport: my-insecure-transport@kubernetescrd
 stunService:
   enabled: true
   type: "LoadBalancer"
