@@ -26,6 +26,10 @@ spec:
             - mountPath: /usr/share/nginx/html
               name: myogg
               readOnly: true
+            - mountPath: /tmp
+              name: tmp
+            - mountPath: /etc
+              name: etc
           resources:
             limits:
               cpu: 100m
@@ -43,3 +47,7 @@ spec:
         - name: myogg
           persistentVolumeClaim:
             claimName: myogg
+        - name: tmp
+          emptyDir: {}
+        - name: etc
+          emptyDir: {}
