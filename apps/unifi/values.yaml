@@ -31,7 +31,7 @@ guiService:
   enabled: true
   annotations:
     traefik.ingress.kubernetes.io/service.serversscheme: https
-    traefik.ingress.kubernetes.io/service.serverstransport: my-insecure-transport@kubernetescrd
+    traefik.ingress.kubernetes.io/service.serverstransport: unifi-my-insecure-transport@kubernetescrd
 stunService:
   enabled: true
   type: "LoadBalancer"
