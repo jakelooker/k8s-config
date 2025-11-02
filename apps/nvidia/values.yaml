@@ -1,0 +1,58 @@
+hostPaths:
+  rootFS: "/"
+  driverInstallDir: "/run/nvidia/driver"
+
+daemonsets:
+  labels: {}
+  annotations: {}
+  priorityClassName: system-node-critical
+  tolerations:
+  - key: nvidia.com/gpu
+    operator: Exists
+    effect: NoSchedule
+  # configuration for controlling update strategy("OnDelete" or "RollingUpdate") of GPU Operands
+  # note that driver Daemonset is always set with OnDelete to avoid unintended disruptions
+  updateStrategy: "RollingUpdate"
+  # configuration for controlling rolling update of GPU Operands
+  rollingUpdate:
+    # maximum number of nodes to simultaneously apply pod updates on.
+    # can be specified either as number or percentage of nodes. Default 1.
+    maxUnavailable: "1"
+operator:
+  resources:
+    limits:
+      cpu: 500m
+      memory: 350Mi
+    requests:
+      cpu: 200m
+      memory: 100Mi
+
+toolkit:
+  enabled: true
+
+devicePlugin:
+  enabled: true
+
+dcgm:
+  enabled: false
+
+dcgmExporter:
+  enabled: false
+
+gfd:
+  enabled: false
+
+migManager:
+  enabled: false
+
+gdrcopy:
+  enabled: false
+
+vgpuManager:
+  enabled: false
+
+vgpuDeviceManager:
+  enabled: false
+
+vfioManager:
+  enabled: false
