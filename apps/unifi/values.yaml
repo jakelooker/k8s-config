@@ -12,8 +12,6 @@ ingress:
   enabled: true
   annotations:
     traefik.ingress.kubernetes.io/router.middlewares: "default-redirect-https@kubernetescrd"
-    traefik.ingress.kubernetes.io/service.serversscheme: "https"
-    traefik.ingress.kubernetes.io/service.serverstransport: "my-insecure-transport@kubernetescrd"
   hosts:
     - "unifi.dev.myogg.net"
   path: /
@@ -29,6 +27,11 @@ discoveryService:
   annotations:
     metallb.universe.tf/allow-shared-ip: unifi
   loadBalancerIP: "192.168.50.120"
+guiService:
+  enabled: true
+  annotations:
+    traefik.ingress.kubernetes.io/service.serversscheme: "https"
+    traefik.ingress.kubernetes.io/service.serverstransport: "my-insecure-transport@kubernetescrd"
 stunService:
   enabled: true
   type: "LoadBalancer"
