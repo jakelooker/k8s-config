@@ -1,0 +1,67 @@
+deploymentStrategy:
+  type: Recreate
+securityContext:
+  capabilities:
+    drop:
+    - ALL
+  readOnlyRootFilesystem: true
+  runAsNonRoot: true
+  runAsUser: 999
+  runAsGroup: 999
+ingress:
+  enabled: true
+  annotations:
+    traefik.ingress.kubernetes.io/router.middlewares: "default-redirect-https@kubernetescrd"
+    traefik.ingress.kubernetes.io/service.serversscheme: https
+    traefik.ingress.kubernetes.io/service.serverstransport: my-insecure-transport@kubernetescrd
+  hosts:
+    - host: unifi.dev.myogg.net
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+controllerService:
+  enabled: true
+  type: "LoadBalancer"
+  annotations:
+    metallb.universe.tf/allow-shared-ip: unifi
+  loadBalancerIP: "192.168.50.120"
+discoveryService:
+  enabled: true
+  type: "LoadBalancer"
+  annotations:
+    metallb.universe.tf/allow-shared-ip: unifi
+  loadBalancerIP: "192.168.50.120"
+stunService:
+  enabled: true
+  type: "LoadBalancer"
+  annotations:
+    metallb.universe.tf/allow-shared-ip: unifi
+  loadBalancerIP: "192.168.50.120"  
+syslogService:
+  enabled: false
+livenessProbe:
+  initialDelaySeconds: 10
+  tcpSocket:
+    port: http
+  successThreshold: 1
+  failureThreshold: 3
+  timeoutSeconds: 1
+  periodSeconds: 60
+readinessProbe:
+  initialDelaySeconds: 10
+  tcpSocket:
+    port: http
+  successThreshold: 1
+  failureThreshold: 3
+  timeoutSeconds: 1
+  periodSeconds: 30        
+persistence:
+  enabled: true
+  existingClaim: "unifi"
+captivePortal:
+  enabled: false
+resources:
+  limits:
+    cpu: 500m
+    memory: 1Gi
+runAsRoot: false

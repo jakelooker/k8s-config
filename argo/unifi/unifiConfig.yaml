@@ -1,19 +1,19 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: cert-manager
+  name: unifi-config
   namespace: argocd
   annotations:
-    argocd.argoproj.io/sync-wave: "1"    
+    argocd.argoproj.io/sync-wave: "2"
 spec:
   destination:
-    namespace: cert-manager
+    namespace: unifi
     server: https://kubernetes.default.svc
   project: default
   sources:
-    - chart: cert-manager
-      repoURL: quay.io/jetstack/charts
-      targetRevision: v1.19.1
+    - repoURL: https://github.com/jakelooker/k8s-config.git
+      targetRevision: main
+      path: apps/unifi/config
   syncPolicy:
     automated:
       enabled: true
@@ -23,4 +23,4 @@ spec:
       backoff:
         duration: 5s
         factor: 2
-        maxDuration: 3m      
+        maxDuration: 3m    

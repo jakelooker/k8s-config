@@ -1,0 +1,8 @@
+apiVersion: traefik.io/v1alpha1
+kind: ServersTransport
+metadata:
+  name: my-insecure-transport
+  namespace: unifi
+spec:
+  # This is the key setting that ignores the certificate validation errors.
+  insecureSkipVerify: true

@@ -1,0 +1,32 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: jellyfin
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "3"  
+spec:
+  destination:
+    namespace: unifi
+    server: https://kubernetes.default.svc
+  project: default
+  sources:
+    - repoURL: https://github.com/jakelooker/k8s-config.git
+      targetRevision: main
+      ref: values
+    - chart: unifi
+      repoURL: ghcr.io/mkilchhofer/unifi-chart
+      targetRevision: 1.14.1
+      helm:
+        valueFiles:
+          - $values/apps/unifi/values.yaml
+  syncPolicy:
+    automated:
+      enabled: true
+    syncOptions:
+    - CreateNamespace=true
+    retry:
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 3m
