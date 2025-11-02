@@ -18,7 +18,7 @@ spec:
         name: myogg
     spec:
       containers:
-        - image: nginx-unprivileged:latest
+        - image: nginxinc/nginx-unprivileged:latest
           name: myogg
           ports:
             - containerPort: 8080
