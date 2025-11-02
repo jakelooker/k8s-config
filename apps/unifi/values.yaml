@@ -15,10 +15,8 @@ ingress:
     traefik.ingress.kubernetes.io/service.serversscheme: "https"
     traefik.ingress.kubernetes.io/service.serverstransport: "my-insecure-transport@kubernetescrd"
   hosts:
-    - host: unifi.dev.myogg.net
-      paths:
-        - path: /
-          pathType: ImplementationSpecific
+    - "unifi.dev.myogg.net"
+  path: /
 controllerService:
   enabled: true
   type: "LoadBalancer"
