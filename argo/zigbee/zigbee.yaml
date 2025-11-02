@@ -1,0 +1,32 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: zigbee
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "3"  
+spec:
+  destination:
+    namespace: home-assistant
+    server: https://kubernetes.default.svc
+  project: default
+  sources:
+    - repoURL: https://github.com/jakelooker/k8s-config.git
+      targetRevision: main
+      ref: values
+    - chart: zigbee2mqtt
+      repoURL:  https://charts.zigbee2mqtt.io
+      targetRevision: 2.6.3
+      helm:
+        valueFiles:
+          - $values/apps/zigbee/values.yaml
+  syncPolicy:
+    automated:
+      enabled: true
+    syncOptions:
+    - CreateNamespace=true
+    retry:
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 3m
