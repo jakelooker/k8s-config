@@ -1,0 +1,29 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    traefik.ingress.kubernetes.io/router.middlewares: default-redirect-https@kubernetescrd
+  name: myogg
+  namespace: web
+spec:
+  rules:
+  - host: www.dev.myogg.net
+    http:
+      paths:
+      - backend:
+          service:
+            name: myogg
+            port:
+              name: http
+        path: /
+        pathType: Prefix
+  - host: dev.myogg.net
+    http:
+      paths:
+      - backend:
+          service:
+            name: myogg
+            port:
+              name: http
+        path: /
+        pathType: Prefix

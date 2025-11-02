@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: myogg
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/jakelooker/k8s-config.git
+    targetRevision: main
+    path: apps/myogg/config
+    
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: web
+    
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+      allowEmpty: false
+    syncOptions:
+      - CreateNamespace=true
+      - PrunePropagationPolicy=foreground
+      - PruneLast=true
+    retry:
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 3m
