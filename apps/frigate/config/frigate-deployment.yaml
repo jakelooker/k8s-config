@@ -51,8 +51,8 @@ spec:
             #   - ALL
             readOnlyRootFilesystem: false
             runAsNonRoot: false
-            # runAsUser: 2002
-            # runAsGroup: 2002
+            runAsUser: 2002
+            runAsGroup: 2002
       restartPolicy: Always
       # runtimeClassName: nvidia
       volumes:
