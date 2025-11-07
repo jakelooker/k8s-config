@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: vaultwarden
+  name: vaultwarden
+  namespace: vault
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vaultwarden
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: vaultwarden
+    spec:
+      containers:
+        - image: vaultwarden/server:latest
+          env:
+            - name: SIGNUPS_ALLOWED
+              value: "false"
+          name: vaultwarden
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - mountPath: /data
+              name: vaultwarden
+          resources:
+            limits:
+              cpu: 100m
+              memory: 200Mi
+          securityContext:
+            capabilities:
+              drop:
+              - ALL
+            readOnlyRootFilesystem: true
+            runAsNonRoot: true
+            runAsUser: 2005
+            runAsGroup: 2005
+      restartPolicy: Always
+      volumes:
+        - name: vaultwarden
+          persistentVolumeClaim:
+            claimName: vault
