@@ -69,7 +69,11 @@ service:
 
 config:
   persistence:
+    size: 5Gi
+    accessModes:
+      - readWriteOnce
     volumeName: "seerr"
+    name: "seerr"
 
 ingress:
   enabled: true
