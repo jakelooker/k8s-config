@@ -14,7 +14,7 @@ spec:
     - repoURL: https://github.com/jakelooker/k8s-config.git
       targetRevision: main
       ref: values
-    - chart: unifi
+    - chart: jellyseerr-chart
       repoURL: ghcr.io/fallenbagel/jellyseerr
       targetRevision: 2.7.0
       helm:
