@@ -74,6 +74,7 @@ config:
       - ReadWriteOnce
     volumeName: "seerr"
     name: "seerr"
+    storageClassName: "longhorn"
 
 ingress:
   enabled: true
