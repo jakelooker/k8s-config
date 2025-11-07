@@ -77,7 +77,7 @@ config:
 
 ingress:
   enabled: true
-  ingressClassName: "treafik"
+  ingressClassName: "traefik"
   annotations:
     traefik.ingress.kubernetes.io/router.middlewares: default-redirect-https@kubernetescrd
   hosts:
