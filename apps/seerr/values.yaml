@@ -71,7 +71,7 @@ config:
   persistence:
     size: 5Gi
     accessModes:
-      - readWriteOnce
+      - ReadWriteOnce
     volumeName: "seerr"
     name: "seerr"
 
