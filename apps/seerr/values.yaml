@@ -1,0 +1,98 @@
+image:
+  registry: ghcr.io
+  repository: fallenbagel/jellyseerr
+  pullPolicy: IfNotPresent
+  # -- Overrides the image tag whose default is the chart appVersion.
+  tag: ""
+  sha: ""
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+# Liveness / Readiness / Startup Probes
+probes:
+  # -- Configure liveness probe
+  livenessProbe: {}
+  # initialDelaySeconds: 60
+  # periodSeconds: 30
+  # timeoutSeconds: 5
+  # successThreshold: 1
+  # failureThreshold: 5
+  # -- Configure readiness probe
+  readinessProbe: {}
+  # initialDelaySeconds: 60
+  # periodSeconds: 30
+  # timeoutSeconds: 5
+  # successThreshold: 1
+  # failureThreshold: 5
+  # -- Configure startup probe
+  startupProbe: null
+  #  tcpSocket:
+  #    port: http
+
+# -- Environment variables to add to the jellyseerr pods
+extraEnv: []
+# -- Environment variables from secrets or configmaps to add to the jellyseerr pods
+extraEnvFrom: []
+
+serviceAccount:
+  create: true
+  automount: true
+  annotations: {}
+  name: ""
+
+podAnnotations: {}
+podLabels: {}
+
+podSecurityContext:
+  capabilities:
+    drop:
+    - ALL
+  readOnlyRootFilesystem: false
+  runAsNonRoot: true
+  runAsUser: 2006
+  runAsGroup: 2006
+
+securityContext:
+  capabilities:
+    drop:
+    - ALL
+  readOnlyRootFilesystem: false
+  runAsNonRoot: true
+  runAsUser: 2006
+  runAsGroup: 2006
+
+service:
+  type: ClusterIP
+  port: 80
+
+config:
+  persistence:
+    volumeName: "seerr"
+
+ingress:
+  enabled: true
+  ingressClassName: "treafik"
+  annotations:
+    traefik.ingress.kubernetes.io/router.middlewares: default-redirect-https@kubernetescrd
+  hosts:
+    - host: media.dev.myogg.net
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls: []
+
+resources: 
+  cpu: 100m
+  memory: 128Mi
+requests:
+  cpu: 100m
+  memory: 128Mi
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
