@@ -1,0 +1,12 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: automation
+  namespace: argocd
+spec:
+  description: "Home Assistant and related items"
+  sourceRepos:
+  - '*'
+  destinations:
+  - server: 'https://kubernetes.default.svc'
+    namespace: '*'
