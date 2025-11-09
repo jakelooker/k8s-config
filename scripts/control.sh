@@ -1,5 +1,14 @@
 #!/usr/bin/env bash
 
+if [ "$1" == "" ]; then
+    echo "Help"
+    echo "Arguments: drain, start"
+    echo "./control.sh drain"
+    echo "Get all nodes and drain them one by one"
+    echo "./control.sh start"
+    echo "Uncordon all nodes"
+fi
+
 if [ "$1" == "drain" ]; then
     NODES=($(kubectl get nodes -o name))
     for NODE in "${NODES[@]}"; do
@@ -16,10 +25,3 @@ if [ "$1" == "start" ]; then
         kubectl uncordon $NODE
     done
 fi
-
-echo "Help"
-echo "Arguments: drain, start"
-echo "./control.sh drain"
-echo "Get all nodes and drain them one by one"
-echo "./control.sh start"
-echo "Uncordon all nodes"

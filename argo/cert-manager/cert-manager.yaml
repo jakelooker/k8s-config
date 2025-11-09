@@ -9,7 +9,7 @@ spec:
   destination:
     namespace: cert-manager
     server: https://kubernetes.default.svc
-  project: default
+  project: prereq
   sources:
     - chart: cert-manager
       repoURL: quay.io/jetstack/charts

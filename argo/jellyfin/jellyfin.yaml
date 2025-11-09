@@ -9,7 +9,7 @@ spec:
   destination:
     namespace: tv
     server: https://kubernetes.default.svc
-  project: default
+  project: tv
   sources:
     - repoURL: https://github.com/jakelooker/k8s-config.git
       targetRevision: main

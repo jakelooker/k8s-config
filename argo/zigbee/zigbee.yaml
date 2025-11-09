@@ -9,7 +9,7 @@ spec:
   destination:
     namespace: home-assistant
     server: https://kubernetes.default.svc
-  project: default
+  project: automation
   sources:
     - repoURL: https://github.com/jakelooker/k8s-config.git
       targetRevision: main

@@ -9,7 +9,7 @@ spec:
   destination:
     namespace: unifi
     server: https://kubernetes.default.svc
-  project: default
+  project: network
   sources:
     - repoURL: https://github.com/jakelooker/k8s-config.git
       targetRevision: main

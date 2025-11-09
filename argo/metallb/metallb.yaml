@@ -9,7 +9,7 @@ spec:
   destination:
     namespace: metallb-system
     server: https://kubernetes.default.svc
-  project: default
+  project: prereq
   sources:
     - chart: metallb
       repoURL: https://metallb.github.io/metallb

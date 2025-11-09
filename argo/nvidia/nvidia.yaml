@@ -9,7 +9,7 @@ spec:
   destination:
     namespace: kube-system
     server: https://kubernetes.default.svc
-  project: default
+  project: prereq
   sources:
     - repoURL: https://github.com/jakelooker/k8s-config.git
       targetRevision: main
