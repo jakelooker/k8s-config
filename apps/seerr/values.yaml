@@ -55,10 +55,10 @@ podSecurityContext:
   runAsGroup: 2006
 
 securityContext:
-  capabilities:
-    drop:
-    - ALL
-  readOnlyRootFilesystem: false
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: false
   runAsNonRoot: true
   runAsUser: 2006
   runAsGroup: 2006
@@ -66,9 +66,6 @@ securityContext:
 service:
   type: ClusterIP
   port: 5055
-  ipFamilyPolicy: SingleStack
-  ipFamilies:
-    - IPv4
 
 config:
   persistence:
