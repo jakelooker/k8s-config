@@ -78,8 +78,8 @@ config:
 ingress:
   enabled: true
   ingressClassName: "traefik"
-  annotations:
-    traefik.ingress.kubernetes.io/router.middlewares: default-redirect-https@kubernetescrd
+  annotations: {}
+    #traefik.ingress.kubernetes.io/router.middlewares: default-redirect-https@kubernetescrd
   hosts:
     - host: media.dev.myogg.net
       paths:
