@@ -14,6 +14,10 @@ spec:
     - chart: cert-manager
       repoURL: quay.io/jetstack/charts
       targetRevision: v1.20.0
+  helm:
+      parameters:
+        - name: installCRDs
+          value: "true"
   syncPolicy:
     automated:
       enabled: true
