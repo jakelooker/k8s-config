@@ -16,7 +16,7 @@ spec:
       targetRevision: v1.20.0
   helm:
       parameters:
-        - name: installCRDs
+        - name: "crds.enabled"
           value: "true"
   syncPolicy:
     automated:
