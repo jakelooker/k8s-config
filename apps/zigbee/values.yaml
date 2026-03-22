@@ -45,10 +45,10 @@ statefulset:
   annotations: {}
   # -- annotations for the pod template
   podAnnotations: {}
-  storage:
-    enabled: true
-    # -- the name for the storage class to be used in the persistent volume claim
-    storageClassName: longhorn
+  # storage:
+  #   enabled: true
+  #   # -- the name for the storage class to be used in the persistent volume claim
+  #   storageClassName: longhorn
   secrets:
     # -- the name for the kubernets secret to mount as secret.yaml. This can be referenced in the config
     # by using advanced configurations https://www.zigbee2mqtt.io/guide/configuration/frontend.html#advanced-configuration
