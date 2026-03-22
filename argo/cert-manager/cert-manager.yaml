@@ -11,13 +11,15 @@ spec:
     server: https://kubernetes.default.svc
   project: prereq
   sources:
+    - repoURL: https://github.com/jakelooker/k8s-config.git
+      targetRevision: main
+      ref: values  
     - chart: cert-manager
       repoURL: quay.io/jetstack/charts
       targetRevision: v1.20.0
   helm:
-      parameters:
-        - name: "crds.enabled"
-          value: "true"
+      valueFiles:
+        - $values/apps/cert-manager/values.yaml
   syncPolicy:
     automated:
       enabled: true
