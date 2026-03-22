@@ -27,7 +27,7 @@ secretesMigratorContainer:
   # -- yq runs by default with user 1000 which does not have
   # -- permissions to create files since z2m runs with root (by default)
   securityContext:
-    runAsUser: 0
+    runAsUser: 2004
 
 service:
   # -- annotations for the service created
