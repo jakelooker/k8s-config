@@ -185,7 +185,7 @@ zigbee2mqtt:
     cache_state_send_on_startup: true
     # -- Optional: Add a last_seen attribute to MQTT messages, contains date/time of last Zigbee message
     # possible values are: disable (default), ISO_8601, ISO_8601_local, epoch (default: disable)
-    last_seen: "disable"
+    last_seen: "enabled"
     # -- Optional: Add an elapsed attribute to MQTT messages, contains milliseconds since the previous msg (default: false)
     elapsed: false
     # -- Optional: Enables report feature, this feature is DEPRECATED since reporting is now setup by default
